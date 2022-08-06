@@ -90,4 +90,42 @@ function getSlidePrev() {
 
 slidePrev.addEventListener('click', getSlidePrev);
 
-//========================================================
+//weather widget========================================================
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const city = document.querySelector('.city');
+
+city.addEventListener('change', getWeather);
+
+const wind = document.querySelector('.wind');
+const humidity = document.querySelector('.humidity');
+
+const langEn = 'en';
+const langRu = 'ru';
+const tempC = 'metric';
+const tempF = 'imperial';
+
+async function getWeather() {
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${langEn}&appid=08f2a575dda978b9c539199e54df03b0&units=${tempF}`;
+	const res = await fetch(url);
+	const data = await res.json();
+
+	weatherIcon.className = 'weather-icon owf';
+	weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+	temperature.textContent = `${data.main.temp}°F`;
+	weatherDescription.textContent = data.weather[0].description;
+	wind.textContent = `Wind speed: ${data.main.humidity}m/s`;
+	humidity.textContent = `Humidity: ${data.main.humidity}%`;
+}
+getWeather();
+
+// api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=40eb556ad7c0460c4fa45284a8706e5e
+// api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e40bb5f53a4497757c0fd52d1d0219d3
+
+//==================================================================
+
+/*
+
+
+*/
