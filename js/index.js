@@ -120,7 +120,7 @@ async function getWeather() {
 }
 getWeather();
 
-// api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=40eb556ad7c0460c4fa45284a8706e5e
+// https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=40eb556ad7c0460c4fa45284a8706e5e
 // api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e40bb5f53a4497757c0fd52d1d0219d3
 
 //==================================================================

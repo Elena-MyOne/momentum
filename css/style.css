@@ -200,7 +200,7 @@ body {
   margin-bottom: 10px;
   font-family: 'Arial-MT';
   font-size: 100px;
-  letter-spacing: -4px;  
+  letter-spacing: -4px;
 }
 
 .date {
@@ -267,14 +267,26 @@ body {
 }
 
 @media (max-width: 768px) {
+	.weather {
+		width: 140px;
+	}
+
+	.city {
+		width: 120px;
+	}
+
   .time {
     min-height: 80px;
-    font-size: 72px;    
+    font-size: 40px;    
   }
+
+	.date {
+		font-size: 18px;
+	}
 
   .greeting-container {
     min-height: 40px;
-    font-size: 32px;
+    font-size: 18px;
   }
 
   .greeting {
@@ -282,7 +294,7 @@ body {
   }
 
   .name {
-    font-size: 32px;
+    font-size: 18px;
     padding: 5px;
   }
 }
