@@ -107,25 +107,37 @@ const tempC = 'metric';
 const tempF = 'imperial';
 
 async function getWeather() {
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${langEn}&appid=08f2a575dda978b9c539199e54df03b0&units=${tempF}`;
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${langEn}&appid=e40bb5f53a4497757c0fd52d1d0219d3&units=${tempC}`;
 	const res = await fetch(url);
 	const data = await res.json();
 
 	weatherIcon.className = 'weather-icon owf';
 	weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-	temperature.textContent = `${data.main.temp}°F`;
+	temperature.textContent = `${data.main.temp}°C`;
 	weatherDescription.textContent = data.weather[0].description;
 	wind.textContent = `Wind speed: ${data.main.humidity}m/s`;
 	humidity.textContent = `Humidity: ${data.main.humidity}%`;
 }
 getWeather();
 
-// https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=40eb556ad7c0460c4fa45284a8706e5e
-// api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=e40bb5f53a4497757c0fd52d1d0219d3
+function setWeatherLocalStorage() {
+	if (city.value === '') return city.value = 'Minsk'
+	return localStorage.setItem('city', city.value);
+}
+
+window.addEventListener('beforeunload', setWeatherLocalStorage);
+
+function getWeatherLocalStorage() {
+	if (localStorage.getItem('city')) {
+		city.value = localStorage.getItem('city');
+		getWeather();
+	}
+}
+
+window.addEventListener('load', getWeatherLocalStorage);
 
 //==================================================================
 
 /*
-
 
 */
