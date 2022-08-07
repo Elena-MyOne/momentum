@@ -111,17 +111,26 @@ async function getWeather() {
 	const res = await fetch(url);
 	const data = await res.json();
 
-	weatherIcon.className = 'weather-icon owf';
-	weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-	temperature.textContent = `${data.main.temp}°C`;
-	weatherDescription.textContent = data.weather[0].description;
-	wind.textContent = `Wind speed: ${data.main.humidity}m/s`;
-	humidity.textContent = `Humidity: ${data.main.humidity}%`;
+	try {
+		removeWeaterError();
+		weatherIcon.className = 'weather-icon owf';
+		weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+		temperature.textContent = `${Math.floor(data.main.temp)}°C`;
+		weatherDescription.textContent = data.weather[0].description;
+		wind.textContent = `Wind speed: ${Math.floor(data.wind.speed)} m/s`;
+		humidity.textContent = `Humidity: ${data.main.humidity}%`;
+	} catch (err) {
+		showWeatherError();
+	}
+
 }
 getWeather();
 
 function setWeatherLocalStorage() {
-	if (city.value === '') return city.value = 'Minsk'
+	if (city.value === '') {
+		removeWeaterError();
+		city.value = 'Minsk'
+	};
 	return localStorage.setItem('city', city.value);
 }
 
@@ -136,8 +145,55 @@ function getWeatherLocalStorage() {
 
 window.addEventListener('load', getWeatherLocalStorage);
 
-//==================================================================
+const weatherError = document.querySelector('.weather-error');
+const weather = document.querySelector('.weather');
 
+function showWeatherError() {
+	weatherError.textContent = `Error! city not found`;
+	temperature.classList.add('hidden');
+	weatherDescription.classList.add('hidden');
+	wind.classList.add('hidden');
+	humidity.classList.add('hidden');
+	weather.style.justifyContent = 'start';
+}
+
+function removeWeaterError() {
+	weatherError.textContent = "";
+	temperature.classList.remove('hidden');
+	weatherDescription.classList.remove('hidden');
+	wind.classList.remove('hidden');
+	humidity.classList.remove('hidden');
+	weather.style.justifyContent = 'start';
+}
+//quote==================================================================
+const changeQuote = document.querySelector('.change-quote');
+const quote = document.querySelector('.quote');
+const author = document.querySelector('.author');
+
+async function getQuotes() {
+	try {
+		const quotes = 'https://type.fit/api/quotes';
+		const res = await fetch(quotes);
+		const data = await res.json();
+
+		let quoteNum = getRandomArbitrary(0, 1642);
+		quote.textContent = `"${data[quoteNum].text}"`;
+		(data[quoteNum].author === null) ? author.textContent = 'Ananimus' : author.textContent = data[quoteNum].author;
+	} catch (err) {
+		showQuoteError();
+	}
+
+}
+getQuotes();
+
+changeQuote.addEventListener('click', getQuotes);
+
+function showQuoteError() {
+	quote.textContent = 'Error! quote not found';
+	author.textContent = '';
+}
+
+//========================================================================
 /*
 
 */
