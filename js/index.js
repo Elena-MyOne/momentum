@@ -226,6 +226,7 @@ const playNextBtn = document.querySelector('.play-next');
 const playListContainer = document.querySelector('.play-list');
 const song = document.querySelector('.song');
 const progress = document.querySelector('.progress');
+const progressCotainer = document.querySelector('.progress-cotainer');
 
 let isPlay = false;
 
@@ -303,13 +304,21 @@ function styleActivePlayItem(elem) {
 	arrPlayItems[elem].classList.add('active')
 }
 
-function updateProgress(e) {
+function updateProgressBar(e) {
 	const { duration, currentTime } = e.srcElement;
 	const progressPrercent = (currentTime / duration) * 100;
 	progress.style.width = `${progressPrercent}%`
 }
 
-audio.addEventListener('timeupdate', updateProgress)
+function setProgressBar(e) {
+	const width = this.clientWidth;
+	const clickX = e.offsetX;
+	const duration = audio.duration;
+	audio.currentTime = (clickX / width) * duration;
+}
+
+audio.addEventListener('timeupdate', updateProgressBar);
+progressCotainer.addEventListener('click', setProgressBar);
 
 
 /* 
