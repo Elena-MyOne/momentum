@@ -51,6 +51,7 @@ const body = document.body;
 const slidePrev = document.querySelector('.slide-prev');
 const slideNext = document.querySelector('.slide-next');
 
+//поместить в основной файл
 function getRandomArbitrary(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
@@ -193,7 +194,118 @@ function showQuoteError() {
 	author.textContent = '';
 }
 
-//========================================================================
+//playList.js=========================================
+const playList = [
+	{
+		title: 'Aqua Caelestis',
+		src: '../assets/sounds/Aqua Caelestis.mp3',
+		duration: '00:39'
+	},
+	{
+		title: 'Ennio Morricone',
+		src: '../assets/sounds/Ennio Morricone.mp3',
+		duration: '01:37'
+	},
+	{
+		title: 'River Flows In You',
+		src: '../assets/sounds/River Flows In You.mp3',
+		duration: '01:37'
+	},
+	{
+		title: 'Summer Wind',
+		src: '../assets/sounds/Summer Wind.mp3',
+		duration: '01:50'
+	}
+]
+
+//player.js========================================================================
+const playerControls = document.querySelector('.player-controls');
+const playPrevBtn = document.querySelector('.play-prev');
+const play = document.querySelector('.play');
+const playNextBtn = document.querySelector('.play-next');
+const playListContainer = document.querySelector('.play-list');
+
+let isPlay = false;
+
+let playNum = 0;
+
+const audio = new Audio();
+
+function startTrack() {
+	audio.src = playList[playNum].src;
+	audio.currentTime = 0;
+	audio.play();
+	isPlay = true;
+}
+
+function playAudio() {
+	if (isPlay === false) {
+		startTrack()
+	} else {
+		audio.pause();
+		isPlay = false
+	}
+}
+
+function toggleBtn() {
+	play.classList.toggle('pause');
+}
+
+function playNext() {
+	(playNum === playList.length - 1) ? playNum = 0 : playNum = playNum + 1;
+	styleActivePlayItem(playNum)
+	if (isPlay === true) {
+		startTrack();
+	}
+}
+
+function playPrev() {
+	(playNum === 0) ? playNum = playList.length - 1 : playNum = playNum - 1;
+	styleActivePlayItem(playNum)
+	if (isPlay === true) {
+		startTrack();
+	}
+}
+
+play.addEventListener('click', playAudio);
+play.addEventListener('click', toggleBtn);
+playNextBtn.addEventListener('click', playNext);
+playPrevBtn.addEventListener('click', playPrev);
+
+function createLi(track) {
+	const li = document.createElement('li');
+	li.classList.add('play-item');
+	li.textContent = `${playList[track].title}`;
+	playListContainer.append(li);
+}
+
+playList.forEach((item, index) => {
+	createLi(index)
+});
+
+const playItems = document.querySelectorAll('.play-item');
+playItems[0].classList.add('active');
+
+function styleActivePlayItem(elem) {
+	const arrPlayItems = Array.from(playItems);
+	arrPlayItems.forEach(item => {
+		item.classList.remove('active')
+	})
+	arrPlayItems[elem].classList.add('active')
+}
+
+//TODO ====================================================
+
+
+
+//TODO ====================================================
+
 /*
+ended
+Событие ended возникает для медийного элемента и для медиа контроллера, 
+когда воспроизведение было остановлено по причине достижение конца медиа файла. 
+При этом событии свойство media.currentTime равно времени окончания медиа файла (
+это не всегда может быть именно длительность медиа файла) 
+в плеере и свойство media.ended установлено в значение true.
 
 */
