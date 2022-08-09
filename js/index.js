@@ -271,6 +271,7 @@ play.addEventListener('click', playAudio);
 play.addEventListener('click', toggleBtn);
 playNextBtn.addEventListener('click', playNext);
 playPrevBtn.addEventListener('click', playPrev);
+audio.addEventListener('ended', playNext);
 
 function createLi(track) {
 	const li = document.createElement('li');
@@ -294,11 +295,8 @@ function styleActivePlayItem(elem) {
 	arrPlayItems[elem].classList.add('active')
 }
 
-//TODO ====================================================
 
 
-
-//TODO ====================================================
 
 /*
 ended
