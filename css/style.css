@@ -132,9 +132,31 @@ body {
 }
 
 .song {
-	text-align: left;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	font-size: 14px;
+}
+
+.progress-cotainer {
+	width: 100%;
+	height: 6px;
+	background-color: rgb(255, 255, 255, 0.4);
+	border-radius: 5px;
+	margin-bottom: 15px;
+	outline: 1px solid rgb(255, 255, 255, 0);
+	transition: .3s;
+	cursor: pointer;
+}
+
+.progress-cotainer:hover {
+	outline: 1px solid rgb(255, 255, 255, 0.8);
+	transition: .3s;
+}
+
+.progress {
+	width: 0%;
+	height: 6px;
+	background-color: rgb(255, 255, 255, 1);
+	border-radius: 5px;
 }
 
 .weather {

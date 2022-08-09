@@ -225,6 +225,7 @@ const play = document.querySelector('.play');
 const playNextBtn = document.querySelector('.play-next');
 const playListContainer = document.querySelector('.play-list');
 const song = document.querySelector('.song');
+const progress = document.querySelector('.progress');
 
 let isPlay = false;
 
@@ -302,13 +303,22 @@ function styleActivePlayItem(elem) {
 	arrPlayItems[elem].classList.add('active')
 }
 
+function updateProgress(e) {
+	const { duration, currentTime } = e.srcElement;
+	const progressPrercent = (currentTime / duration) * 100;
+	progress.style.width = `${progressPrercent}%`
+}
 
-/*
-ended
-Событие ended возникает для медийного элемента и для медиа контроллера, 
-когда воспроизведение было остановлено по причине достижение конца медиа файла. 
-При этом событии свойство media.currentTime равно времени окончания медиа файла (
-это не всегда может быть именно длительность медиа файла) 
-в плеере и свойство media.ended установлено в значение true.
+audio.addEventListener('timeupdate', updateProgress)
+
+
+/* 
+TODO
++ и перемещении ползунка прогресс-бара меняется текущее время воспроизведения трека
++ отображается текущее и общее время воспроизведения трека
++ есть кнопка звука при клике по которой можно включить/отключить звук
++ добавлен регулятор громкости, при перемещении ползунка регулятора громкости 
+	меняется громкость проигрывания звука
++ можно запустить и остановить проигрывания трека кликом по кнопке Play/Pause рядом с ним в плейлисте
 
 */
