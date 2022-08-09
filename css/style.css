@@ -42,7 +42,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 120px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .play-list {
@@ -129,6 +129,12 @@ body {
 
 .play-next {
   background-image: url("../assets/svg/play-next.svg");
+}
+
+.song {
+	text-align: left;
+	margin-bottom: 10px;
+	font-size: 14px;
 }
 
 .weather {

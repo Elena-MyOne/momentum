@@ -224,6 +224,7 @@ const playPrevBtn = document.querySelector('.play-prev');
 const play = document.querySelector('.play');
 const playNextBtn = document.querySelector('.play-next');
 const playListContainer = document.querySelector('.play-list');
+const song = document.querySelector('.song');
 
 let isPlay = false;
 
@@ -240,7 +241,7 @@ function startTrack() {
 
 function playAudio() {
 	if (isPlay === false) {
-		startTrack()
+		startTrack();
 	} else {
 		audio.pause();
 		isPlay = false
@@ -257,6 +258,7 @@ function playNext() {
 	if (isPlay === true) {
 		startTrack();
 	}
+	showAudioName()
 }
 
 function playPrev() {
@@ -265,6 +267,11 @@ function playPrev() {
 	if (isPlay === true) {
 		startTrack();
 	}
+	showAudioName()
+}
+
+function showAudioName() {
+	return song.textContent = playList[playNum].title;
 }
 
 play.addEventListener('click', playAudio);
@@ -294,8 +301,6 @@ function styleActivePlayItem(elem) {
 	})
 	arrPlayItems[elem].classList.add('active')
 }
-
-
 
 
 /*
