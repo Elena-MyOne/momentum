@@ -54,7 +54,7 @@ body {
   padding: 5px;
   padding-left: 20px;
   list-style: none;
-  opacity: .8;
+  opacity: .6;
   cursor: pointer;
   transition: .3s;
 }
@@ -136,11 +136,34 @@ body {
 	font-size: 14px;
 }
 
-.progress-controls {
+.volume-controls {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 10px;
+}
+
+.volume-cotainer,
+.progress-cotainer {
+	width: 75%;
+	height: 8px;
+	background-color: rgb(255, 255, 255, 0.4);
+	border-radius: 5px;
+	outline: 1px solid rgb(255, 255, 255, 0);
+	transition: .3s;
+	cursor: pointer;
+}
+
+.progress,
+.volume-progress {
+	width: 0%;
+	height: 8px;
+	background-color: rgb(255, 255, 255, 1);
+	border-radius: 5px;
+}
+
+.volume-progress {
+	width: 100%;
 }
 
 .volume {
@@ -156,25 +179,13 @@ body {
 }
 
 .progress-cotainer {
-	width: 75%;
-	height: 8px;
-	background-color: rgb(255, 255, 255, 0.4);
-	border-radius: 5px;
-	outline: 1px solid rgb(255, 255, 255, 0);
-	transition: .3s;
-	cursor: pointer;
+	width: 100%;
+	margin: 15px 0px;
 }
 
 .progress-cotainer:hover {
 	outline: 1px solid rgb(255, 255, 255, 0.8);
 	transition: .3s;
-}
-
-.progress {
-	width: 0%;
-	height: 8px;
-	background-color: rgb(255, 255, 255, 1);
-	border-radius: 5px;
 }
 
 .weather {

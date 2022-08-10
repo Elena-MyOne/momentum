@@ -229,6 +229,8 @@ const progress = document.querySelector('.progress');
 const progressCotainer = document.querySelector('.progress-cotainer');
 const volume = document.querySelector('.volume');
 const volumeOff = document.querySelector('.volume-off');
+const volumeCotainer = document.querySelector('.volume-cotainer');
+const volumeProgress = document.querySelector('.volume-progress');
 
 let isPlay = false;
 
@@ -327,8 +329,16 @@ function mutedAudio() {
 	volume.classList.toggle('volume-off');
 }
 
-volume.addEventListener('click', mutedAudio);
+function setVolumeBar(e) {
+	const width = this.clientWidth;
+	const clickX = e.offsetX;
+	const progressPrercent = (clickX / width) * 100;
+	audio.volume = clickX / width;
+	volumeProgress.style.width = `${progressPrercent}%`
+}
 
+volume.addEventListener('click', mutedAudio);
+volumeCotainer.addEventListener('click', setVolumeBar);
 
 /* 
 TODO
@@ -337,4 +347,5 @@ TODO
 	меняется громкость проигрывания звука
 + можно запустить и остановить проигрывания трека кликом по кнопке Play/Pause рядом с ним в плейлисте
 
+volumechange
 */
