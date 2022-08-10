@@ -231,6 +231,8 @@ const volume = document.querySelector('.volume');
 const volumeOff = document.querySelector('.volume-off');
 const volumeCotainer = document.querySelector('.volume-cotainer');
 const volumeProgress = document.querySelector('.volume-progress');
+const timeCurrent = document.querySelector('.time-current');
+const timeDuration = document.querySelector('.time-duration');
 
 let isPlay = false;
 
@@ -252,6 +254,7 @@ function playAudio() {
 		audio.pause();
 		isPlay = false
 	}
+	setTimeTrackDuration()
 }
 
 function toggleBtn() {
@@ -264,7 +267,8 @@ function playNext() {
 	if (isPlay === true) {
 		startTrack();
 	}
-	showAudioName()
+	showAudioName();
+	setTimeTrackDuration()
 }
 
 function playPrev() {
@@ -273,12 +277,41 @@ function playPrev() {
 	if (isPlay === true) {
 		startTrack();
 	}
-	showAudioName()
+	showAudioName();
+	setTimeTrackDuration()
 }
 
 function showAudioName() {
 	return song.textContent = playList[playNum].title;
 }
+
+function setTimeTrackDuration() {
+	const timeTrackDuration = playList[playNum].duration;
+	return timeDuration.textContent = timeTrackDuration;
+}
+
+function setTimeTrackCurrent(e) {
+	if (isPlay === true) {
+		const currentTime = audio.currentTime;
+		const timePast = getTimeCodeFromNum(currentTime)
+		return timeCurrent.textContent = `${timePast}`
+	}
+}
+
+setInterval(setTimeTrackCurrent, 1000);
+
+//turn 128 seconds into 2:08 - put to global
+function getTimeCodeFromNum(num) {
+	let seconds = parseInt(num);
+	let minutes = parseInt(seconds / 60);
+	seconds -= minutes * 60;
+	const hours = parseInt(minutes / 60);
+	minutes -= hours * 60;
+
+	if (hours === 0) return `${String(minutes).padStart(2, 0)}:${String(seconds % 60).padStart(2, 0)}`;
+	return `${String(hours).padStart(2, 0)}:${String(minutes).padStart(2, 0)}:${String(seconds % 60).padStart(2, 0)}`;
+}
+
 
 play.addEventListener('click', playAudio);
 play.addEventListener('click', toggleBtn);
@@ -318,8 +351,14 @@ function setProgressBar(e) {
 	const width = this.clientWidth;
 	const clickX = e.offsetX;
 	const duration = audio.duration;
-	audio.currentTime = (clickX / width) * duration;
+
+	if (isPlay === true) {
+		audio.currentTime = (clickX / width) * duration;
+	}
+
+
 }
+
 
 audio.addEventListener('timeupdate', updateProgressBar);
 progressCotainer.addEventListener('click', setProgressBar);
@@ -340,12 +379,11 @@ function setVolumeBar(e) {
 volume.addEventListener('click', mutedAudio);
 volumeCotainer.addEventListener('click', setVolumeBar);
 
+
+
 /* 
 TODO
 + отображается текущее и общее время воспроизведения трека
-+ добавлен регулятор громкости, при перемещении ползунка регулятора громкости 
-	меняется громкость проигрывания звука
 + можно запустить и остановить проигрывания трека кликом по кнопке Play/Pause рядом с ним в плейлисте
 
-volumechange
 */

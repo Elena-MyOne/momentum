@@ -183,9 +183,17 @@ body {
 	margin: 15px 0px;
 }
 
-.progress-cotainer:hover {
-	outline: 1px solid rgb(255, 255, 255, 0.8);
+.progress-cotainer:hover,
+.volume-cotainer:hover {
+	outline: 1px solid rgba(255, 255, 255, 0.8);
 	transition: .3s;
+}
+
+.time-container {
+	text-align: right;
+	font-size: 12px;
+	color: rgb(255, 255, 255, 0.8);
+	margin-bottom: 5px;
 }
 
 .weather {
@@ -339,7 +347,7 @@ body {
   min-height: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 930px) {
 	.weather {
 		width: 140px;
 	}
@@ -350,7 +358,8 @@ body {
 
   .time {
     min-height: 80px;
-    font-size: 40px;    
+    font-size: 40px;
+		padding-top: 30px;
   }
 
 	.date {
