@@ -40,8 +40,8 @@ body {
 .player-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 120px;
+  justify-content: space-around;
+  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -132,16 +132,34 @@ body {
 }
 
 .song {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	font-size: 14px;
 }
 
+.progress-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.volume {
+	width: 25px;
+  height: 25px;
+	background-image: url("../assets/svg/volume.svg");
+}
+
+.volume-off {
+	width: 25px;
+  height: 25px;
+	background-image: url("../assets/svg/volume-off.svg");
+}
+
 .progress-cotainer {
-	width: 100%;
+	width: 75%;
 	height: 8px;
 	background-color: rgb(255, 255, 255, 0.4);
 	border-radius: 5px;
-	margin-bottom: 15px;
 	outline: 1px solid rgb(255, 255, 255, 0);
 	transition: .3s;
 	cursor: pointer;

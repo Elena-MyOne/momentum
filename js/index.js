@@ -227,6 +227,8 @@ const playListContainer = document.querySelector('.play-list');
 const song = document.querySelector('.song');
 const progress = document.querySelector('.progress');
 const progressCotainer = document.querySelector('.progress-cotainer');
+const volume = document.querySelector('.volume');
+const volumeOff = document.querySelector('.volume-off');
 
 let isPlay = false;
 
@@ -320,11 +322,17 @@ function setProgressBar(e) {
 audio.addEventListener('timeupdate', updateProgressBar);
 progressCotainer.addEventListener('click', setProgressBar);
 
+function mutedAudio() {
+	(audio.muted === false) ? audio.muted = true : audio.muted = false
+	volume.classList.toggle('volume-off');
+}
+
+volume.addEventListener('click', mutedAudio);
+
 
 /* 
 TODO
 + отображается текущее и общее время воспроизведения трека
-+ есть кнопка звука при клике по которой можно включить/отключить звук
 + добавлен регулятор громкости, при перемещении ползунка регулятора громкости 
 	меняется громкость проигрывания звука
 + можно запустить и остановить проигрывания трека кликом по кнопке Play/Pause рядом с ним в плейлисте
