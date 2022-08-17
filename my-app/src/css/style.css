@@ -56,12 +56,10 @@ body {
 .play-item {
   position: relative;
   padding: 5px;
-  padding-left: 22px;
   list-style: none;
   opacity: .6;
   cursor: pointer;
   transition: .3s;
-  background: url("../assets/svg/play.svg") left center /15px 15px no-repeat;
 }
 
 .play-item:hover {

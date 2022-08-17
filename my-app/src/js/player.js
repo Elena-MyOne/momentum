@@ -26,7 +26,6 @@ function startTrack() {
 	audio.currentTime = 0;
 	audio.play();
 	isPlay = true;
-   toggleBtnSingleItem(playNum)
 }
 
 function playAudio() {
@@ -41,7 +40,6 @@ function playAudio() {
 function pauseAudio() {
    audio.pause();
 	isPlay = false;
-   pauseBtnSingleItem(playNum)
 }
 
 function toggleBtn() {
@@ -51,13 +49,9 @@ function toggleBtn() {
 function playNext() {
 	(playNum === playList.length - 1) ? playNum = 0 : playNum = playNum + 1;
 	styleActivePlayItem(playNum);
-   toggleBtnSingleItem(playNum);
 	if (isPlay === true) {
 		startTrack();
 	}
-   if (isPlay === false) {
-      pauseBtnSingleItem(playNum);
-   }
 	showAudioName();
 	setTimeTrackDuration()
 }
@@ -65,13 +59,9 @@ function playNext() {
 function playPrev() {
 	(playNum === 0) ? playNum = playList.length - 1 : playNum = playNum - 1;
 	styleActivePlayItem(playNum);
-   toggleBtnSingleItem(playNum);
 	if (isPlay === true) {
 		startTrack();
 	}
-   if (isPlay === false) {
-      pauseBtnSingleItem(playNum);
-   }
 	showAudioName();
 	setTimeTrackDuration()
 }
@@ -173,17 +163,12 @@ volumeCotainer.addEventListener('click', setVolumeBar);
 
 const playSingleItem = document.querySelectorAll('.play-single-item')
 
-function toggleBtnSingleItem(elem) {
+function styleActiveSingleItem(elem) {
    playSingleItem.forEach(item => {
-		item.classList.remove('pause-single-item')
+		item.classList.remove('active')
 	})
-	playSingleItem[elem].classList.toggle('pause-single-item');
+	elem.classList.add('active');
 }
-
-function pauseBtnSingleItem(elem) {
-   playSingleItem[elem].classList.remove('pause-single-item');
-}
-
 
 playListContainer.addEventListener('click', (e) => {
    let target = e.target.closest('.play-item');
@@ -192,9 +177,10 @@ playListContainer.addEventListener('click', (e) => {
       if (target.textContent === playList[1].title) playNum = 1;
       if (target.textContent === playList[2].title) playNum = 2;
       if (target.textContent === playList[3].title) playNum = 3;
-      playAudio();
+      startTrack()
       showAudioName();
-      toggleBtn()
+      play.classList.add('pause');
+      styleActiveSingleItem(target)
    }
 })
 
