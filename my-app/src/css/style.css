@@ -460,10 +460,19 @@ body {
 }
 
 @media (max-width: 930px) {
+   .header {
+      padding: 5px;
+   }
 	.weather {
-		width: 140px;
+		width: 130px;
+      font-size: 14px;
 	}
-
+   .player {
+      font-size: 14px;
+   }
+   .main {
+      font-size: 14px;
+   }
 	.city {
 		width: 120px;
 	}
@@ -491,4 +500,43 @@ body {
     font-size: 18px;
     padding: 5px;
   }
+  .footer {
+   height: 25vh;
+  }
+  .change-quote {
+   position: relative;
+   z-index: 10;
+   width: 20px;
+   height: 20px;
+   background-size: 20px 20px;
+  }
+  .settings {
+   bottom: 3%;
+   width: 25px;  
+   height: 25px;
+   background: url(../assets/svg/settings-24dp.svg) 0 0 /25px 25px no-repeat;
+  }
+
+  .settings-popup {
+   background-color: rgba(109, 106, 106, 1);
+   width: 300px;
+   right: 2%;
+   bottom: 3%;
+   font-size: 12px;
+   padding: 35px 10px 10px 10px;
+  }
+
+   .language,
+   .hide-widget {
+      flex: 1 0 25%;
+   }
+
+   .language-options,
+   .hide-widget-options {
+      flex: 1 0 75%;
+   }
+
+   .settings-item {
+      padding:  10px 0px 15px 0px;
+   }
 }

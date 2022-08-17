@@ -13,10 +13,10 @@ const weather = document.querySelector('.weather');
 
 function setCityByDefault() {
    if (en.classList.contains('active')) {
-      return city.setAttribute('value', "Minsk")
+      return city.setAttribute('value', "New York")
    }
    if (rus.classList.contains('active')) {
-      return city.setAttribute('value', 'Минск')
+      return city.setAttribute('value', 'Нью-Йорк')
    }
 }
 
