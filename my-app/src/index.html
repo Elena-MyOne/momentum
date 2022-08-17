@@ -35,7 +35,7 @@
 			<ul class="play-list"></ul>
 		</div>
 		<div class="weather">
-			<input type="text" class="city" placeholder="City" />
+			<input type="text" class="city" placeholder="City"/>
 			<i class="weather-icon owf"></i>
 			<div class="weather-error"></div>
 			<div class="description-container">
@@ -65,7 +65,34 @@
 			<div class="author"></div>
 		</div>
 	</footer>
-	<script src="js/index.js"></script>
+   <div class="settings-container">
+      <button class="settings"></button>
+      <div class="settings-popup">
+         <div class="popup-close"></div>
+         <div class="settings-item"> 
+            <div class="language">language:</div>
+            <div class="language-options">
+               <span class="en active">en</span>
+               <span class="rus">rus</span>
+            </div>
+         </div>
+         <div class="settings-item">
+            <div class="hide-widget">hide widget:</div>
+            <div class="hide-widget-options">
+               <div class="row">
+                  <span class="time-widget active">time</span>
+                  <span class="date-widget active">date</span>
+                  <span class="greeting-widget active">greeting</span>
+               </div>
+               <div class="row">
+                  <span class="quote-widget active">quote</span>
+                  <span class="weather-widget active">weather</span>
+                  <span class="player-widget active">player</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>
