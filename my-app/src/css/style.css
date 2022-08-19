@@ -149,7 +149,7 @@ body {
 .volume-cotainer,
 .progress-cotainer {
 	width: 75%;
-	height: 8px;
+	height: 7px;
 	background-color: rgb(255, 255, 255, 0.4);
 	border-radius: 5px;
 	outline: 1px solid rgb(255, 255, 255, 0);
@@ -160,7 +160,7 @@ body {
 .progress,
 .volume-progress {
 	width: 0%;
-	height: 8px;
+	height: 7px;
 	background-color: rgb(255, 255, 255, 1);
 	border-radius: 5px;
 }
@@ -368,7 +368,9 @@ body {
    position: absolute;
    bottom: 10%;
    right: 5%;
-   background-color: rgba(61, 60, 60, 0.4);
+   background: rgba(255, 255, 255, 0.2);
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(43, 43, 43, 0.2);
    padding: 35px 25px 20px 20px;
    border-radius: 5px;
    width: 400px;
@@ -516,9 +518,6 @@ body {
   }
 
   .settings-popup {
-   background: rgba(255, 255, 255, 0.2);
-   backdrop-filter: blur(10px);
-   border: 1px solid rgba(43, 43, 43, 0.568);
    width: 300px;
    right: 2%;
    bottom: 3%;

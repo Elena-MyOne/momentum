@@ -19,11 +19,13 @@ let isPlay = false;
 
 let playNum = 0;
 
+let currentTimePlay = 0;
+
 const audio = new Audio();
 
 function startTrack() {
 	audio.src = playList[playNum].src;
-	audio.currentTime = 0;
+	audio.currentTime = currentTimePlay;
 	audio.play();
 	isPlay = true;
 }
@@ -32,7 +34,8 @@ function playAudio() {
 	if (isPlay === false) {
 		startTrack();
 	} else {
-		pauseAudio()
+		pauseAudio();
+      currentTimePlay = audio.currentTime;
 	}
 	setTimeTrackDuration()
 }
@@ -50,6 +53,7 @@ function playNext() {
 	(playNum === playList.length - 1) ? playNum = 0 : playNum = playNum + 1;
 	styleActivePlayItem(playNum);
 	if (isPlay === true) {
+      currentTimePlay = 0;
 		startTrack();
 	}
 	showAudioName();
@@ -60,6 +64,7 @@ function playPrev() {
 	(playNum === 0) ? playNum = playList.length - 1 : playNum = playNum - 1;
 	styleActivePlayItem(playNum);
 	if (isPlay === true) {
+      currentTimePlay = 0;
 		startTrack();
 	}
 	showAudioName();
