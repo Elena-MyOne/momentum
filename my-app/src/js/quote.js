@@ -9,7 +9,7 @@ async function getQuotes() {
    let quotes;
 	try {
       if (en.classList.contains('active')) {
-         quotes = 'https://type.fit/api/quotes';
+         quotes = quotes = 'data-en.json';
       }
       if (rus.classList.contains('active')) {
          quotes = 'data.json';
@@ -18,9 +18,9 @@ async function getQuotes() {
 		const data = await res.json();
 
       if (en.classList.contains('active')) {
-         let quoteNum = getRandomArbitrary(0, 1642);
-         quote.textContent = `"${data[quoteNum].text}"`;
-         (data[quoteNum].author === null) ? author.textContent = 'Anonymous' : author.textContent = data[quoteNum].author;
+         let quoteNum = getRandomArbitrary(0, 40);
+         quote.textContent = `"${data[quoteNum].quote}"`;
+         author.textContent = data[quoteNum].author
       }
       if (rus.classList.contains('active')) {
          let quoteNum = getRandomArbitrary(0, 20);
