@@ -1,4 +1,3 @@
-import { body } from "./globalVar";
 import { time, day } from "./DateAndTime.js";
 import { greetingContainer } from "./greeting.js";
 
@@ -127,6 +126,8 @@ en.addEventListener('click', setLanguageEn);
 en.addEventListener('click', translateSettings);
 rus.addEventListener('click', setLanguageRus);
 rus.addEventListener('click', translateSettings);
+
+
 timeWidget.addEventListener('click', removeHideWidget);
 timeWidget.addEventListener('click', showHideWidget);
 dateWidget.addEventListener('click', removeHideWidget);
@@ -142,3 +143,11 @@ playerWidget.addEventListener('click', showHideWidget);
 
 
 export {settings, showSettings, rus, en}
+
+//TODO
+//1. задать всем widgets общий класс для обработкочиков
+//2. установить обработкики для widgets через closest, тем самым сократить количество обработчиков 
+//3. поменять оформление background popup на с эффектом стекла
+//4. сократить количество диблируещего кода для showHideWidget
+//5. сократить количество диблируещего кода для removeHideWidget
+//6. сделать такБ чтобы настройки сохранялись в localStorage

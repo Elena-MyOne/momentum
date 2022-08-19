@@ -516,7 +516,9 @@ body {
   }
 
   .settings-popup {
-   background-color: rgba(109, 106, 106, 1);
+   background: rgba(255, 255, 255, 0.2);
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(43, 43, 43, 0.568);
    width: 300px;
    right: 2%;
    bottom: 3%;
