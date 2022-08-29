@@ -21,7 +21,6 @@ const player = document.querySelector('.player');
 const todoWidget = document.querySelector('.todo-widget');
 const todo = document.querySelector('.todo');
 
-
 function showSettings() {
    settings.style.display = 'none';
    settingsPopup.classList.add('active')
@@ -130,7 +129,6 @@ function showHideWidget(e) {
    }
 }
 
-// const playerWidget = document.querySelector('.player-widget');
 
 settings.addEventListener('click', showSettings);
 popupClose.addEventListener('click', hideSettings);
