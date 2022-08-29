@@ -8,6 +8,7 @@ const en = document.querySelector('.en');
 const rus = document.querySelector('.rus');
 const language = document.querySelector('.language');
 const hideWidget = document.querySelector('.hide-widget');
+const hideWidgetOptions = document.querySelector('.hide-widget-options');
 const timeWidget = document.querySelector('.time-widget');
 const dateWidget = document.querySelector('.date-widget');
 const greetingWidget = document.querySelector('.greeting-widget');
@@ -127,7 +128,6 @@ en.addEventListener('click', translateSettings);
 rus.addEventListener('click', setLanguageRus);
 rus.addEventListener('click', translateSettings);
 
-
 timeWidget.addEventListener('click', removeHideWidget);
 timeWidget.addEventListener('click', showHideWidget);
 dateWidget.addEventListener('click', removeHideWidget);
@@ -141,13 +141,4 @@ weatherWidget.addEventListener('click', showHideWidget);
 playerWidget.addEventListener('click', removeHideWidget);
 playerWidget.addEventListener('click', showHideWidget);
 
-
-export {settings, showSettings, rus, en}
-
-//TODO
-//1. задать всем widgets общий класс для обработкочиков
-//2. установить обработкики для widgets через closest, тем самым сократить количество обработчиков 
-//3. поменять оформление background popup на с эффектом стекла
-//4. сократить количество диблируещего кода для showHideWidget
-//5. сократить количество диблируещего кода для removeHideWidget
-//6. сделать такБ чтобы настройки сохранялись в localStorage
+export {settings, showSettings, rus, en};

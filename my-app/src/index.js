@@ -5,7 +5,8 @@ import {setBg} from './js/slider.js';
 import {getWeather} from './js/weatherWidget.js';
 import {getQuotes} from './js/quote.js';
 import {setTimeTrackCurrent, playAudio, toggleBtn, playNext, playPrev, updateProgressBar, setProgressBar, mutedAudio, setVolumeBar} from './js/player.js';
-import {settings, showSettings} from './js/settings.js'
+import {settings, showSettings} from './js/settings.js';
+import {getTodoTasksLocal, setTodoTasksLocal, fillTodoList, createTodoItemTemplate} from './js/todo.js'
 
 //time and date
 setInterval(showTime, 1000);
@@ -23,3 +24,5 @@ getWeather();
 //quote
 getQuotes();
 
+//todo
+fillTodoList();
