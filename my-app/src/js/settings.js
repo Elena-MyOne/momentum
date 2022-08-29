@@ -18,6 +18,8 @@ const playerWidget = document.querySelector('.player-widget');
 const footer = document.querySelector('.footer');
 const weather = document.querySelector('.weather');
 const player = document.querySelector('.player');
+const todoWidget = document.querySelector('.todo-widget');
+const todo = document.querySelector('.todo');
 
 
 function showSettings() {
@@ -42,6 +44,7 @@ function translateSettings() {
       quoteWidget.textContent = 'quote';
       weatherWidget.textContent = 'weather';
       playerWidget.textContent = 'player';
+      todoWidget.textContent = 'todo list';
    }
 	if (rus.classList.contains('active')) {
       language.textContent = 'язык:';
@@ -54,6 +57,7 @@ function translateSettings() {
       quoteWidget.textContent = 'цитата';
       weatherWidget.textContent = 'погода';
       playerWidget.textContent = 'плеер';
+      todoWidget.textContent = 'todo лист';
    }
 }
 
@@ -96,6 +100,10 @@ function removeHideWidget(e) {
       setHideWidget(playerWidget);
       player.style.opacity = 0;
    }
+   if (e.target === todoWidget) {
+      setHideWidget(todoWidget);
+      todo.style.opacity = 0;
+   }
 }
 
 function showHideWidget(e) {
@@ -116,6 +124,9 @@ function showHideWidget(e) {
    }
    if (e.target === playerWidget && playerWidget.classList.contains('active')) {
       player.style.opacity = 1;
+   }
+   if (e.target === todoWidget && todoWidget.classList.contains('active')) {
+      todo.style.opacity = 1;
    }
 }
 
@@ -140,5 +151,8 @@ weatherWidget.addEventListener('click', removeHideWidget);
 weatherWidget.addEventListener('click', showHideWidget);
 playerWidget.addEventListener('click', removeHideWidget);
 playerWidget.addEventListener('click', showHideWidget);
+todoWidget.addEventListener('click', removeHideWidget);
+todoWidget.addEventListener('click', showHideWidget);
+
 
 export {settings, showSettings, rus, en};

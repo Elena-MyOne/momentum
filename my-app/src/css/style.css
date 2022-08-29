@@ -559,7 +559,8 @@ body {
 .greeting-widget,
 .quote-widget,
 .weather-widget,
-.player-widget {
+.player-widget,
+.todo-widget {
    color: inherit;
    padding: 5px 8px;
    border-radius: 5px;
@@ -573,7 +574,7 @@ body {
    margin-right: 10px;
 }
 
-.row:first-child {
+.row:not(:last-child) {
    margin-bottom: 20px;
 }
 
@@ -584,7 +585,8 @@ body {
 .greeting-widget.active,
 .quote-widget.active,
 .weather-widget.active,
-.player-widget.active {
+.player-widget.active,
+.todo-widget.active {
    color: #ffe561;
    background-color: rgba(255, 255, 255, 0.3);
 }
