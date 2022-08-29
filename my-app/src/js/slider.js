@@ -18,10 +18,10 @@ function setBg() {
 	}
 
 	const img = new Image();
-   img.src = `../assets/img/images/${timeOfDay}/${bgNum}.jpg`
+   img.src = `../dist/assets/img/images/${timeOfDay}/${bgNum}.jpg`
    // img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`
 	img.onload = () => {
-		body.style.backgroundImage = `url('../assets/img/images/${timeOfDay}/${bgNum}.jpg')`;
+		body.style.backgroundImage = `url('../dist/assets/img/images/${timeOfDay}/${bgNum}.jpg')`;
 	};
 }
 
